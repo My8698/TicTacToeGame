@@ -1,14 +1,11 @@
 package com.bridgelabz;
-
 import java.util.Scanner;
-
 public class TicTacToe {
      /**
          * create a gameboard of char array of size 10
          */
      static char player, computer;
      static Scanner scanner = new Scanner(System.in);
-
      static char[] gameboard = new char[10];
         /**
          *createEmptyBoard Static method to create empty board
@@ -20,6 +17,11 @@ public class TicTacToe {
                 gameboard[index] = ' ';
             }
         }
+
+    /**
+     * ability to choose letter X or O
+     */
+
     public static void chooseLetter() {
         System.out.println("Please Select Your Choice Letter : 'X' or 'O' ");
         char choice = scanner.next().charAt(0);
@@ -31,15 +33,22 @@ public class TicTacToe {
             computer = 'X';
         }
     }
+
+    /**
+     * display gameboard to player so that he can choose for letter option
+     */
+    public static void displayGameBoard(){
+        System.out.println(gameboard[1] + " | " + gameboard[2] + " | " + gameboard[3]);
+        System.out.println("----------");
+        System.out.println(gameboard[4] + " | " + gameboard[5] + " | " + gameboard[6]);
+        System.out.println("----------");
+        System.out.println(gameboard[7] + " | " + gameboard[8] + " | " + gameboard[9]);
+    }
         public static void main(String[] args) {
             System.out.println("Welcome to the TicTacToe Game Program");
-            System.out.println(gameboard[1] + " | " + gameboard[2] + " | " + gameboard[3]);
-            System.out.println("----------");
-            System.out.println(gameboard[4] + " | " + gameboard[5] + " | " + gameboard[6]);
-            System.out.println("----------");
-            System.out.println(gameboard[7] + " | " + gameboard[8] + " | " + gameboard[9]);
             createEmptyBoard();
             chooseLetter();
+            displayGameBoard();
           }
 
     }
