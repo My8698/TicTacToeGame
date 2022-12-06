@@ -60,12 +60,40 @@ public class TicTacToe {
             System.out.println("Invalid Choice");
         }
     }
+    /**
+     * check for free space,
+     * It checks free space is available or not before make a move and
+     * count the number of spaces available
+     */
+    private static void checkFreeSpace()
+    {
+        boolean isSpaceAvailable = false;
+        int numOfFreeSpaces = 0;
+        for(int index=1;index<gameboard.length;index++)
+        {
+            if((gameboard[index] == ' '))
+            {
+                isSpaceAvailable = true;
+                numOfFreeSpaces++;
+            }
+        }
+        if(isSpaceAvailable == false)
+        {
+            System.err.println("Board is full.....! You can't make another move");
+            System.exit(0);
+        }
+        else
+        {
+            System.out.println("Free space is available.......! you have "+numOfFreeSpaces+ " moves left");
+        }
+    }
     public static void main(String[] args) {
             System.out.println("Welcome to the TicTacToe Game Program");
             createEmptyBoard();
             chooseLetter();
             displayGameBoard();
             makeMove();
+            checkFreeSpace();
           }
 
     }
