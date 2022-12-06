@@ -18,11 +18,9 @@ public class TicTacToe {
                 gameboard[index] = ' ';
             }
         }
-
-    /**
+        /**
      * ability to choose letter X or O
      */
-
     public static void chooseLetter() {
         System.out.println("Please Select Your Choice Letter : 'X' or 'O' ");
         char choice = scanner.next().charAt(0);
@@ -61,6 +59,30 @@ public class TicTacToe {
             System.out.println("Invalid Choice");
         }
     }
+    /**playerTurn
+     * method to make user to move to desired location
+     * It takes user input from index 1 to 9.if player entered position contains free space
+     * then player can move to that location. Here we use break to get out from the while loop and
+     * executes the last statement.
+     */
+    private static void playerTurn()
+    {
+        int playerMove;
+        while (true)
+        {
+
+            System.out.println("Choose your location(1-9): ");
+            playerMove = scanner.nextInt();
+            if (gameboard[playerMove] == ' ')
+            {
+                break;
+            }
+
+        }
+        System.out.println("Player choose:: " + playerMove);
+        gameboard[playerMove] = player;
+    }
+
     /**
      * check for free space,
      * It checks free space is available or not before make a move and
@@ -109,7 +131,6 @@ public class TicTacToe {
      *  * method to check player possible winning positions
      * if player get 3 of his letters in a row (up,down,cross) then he becomes winner.
      */
-
     private static void winner() {
         if ((gameboard[1] == player && gameboard[2] == player && gameboard[3] == player)
                 || (gameboard[4] == player && gameboard[5] == player && gameboard[6] == player)
@@ -124,14 +145,37 @@ public class TicTacToe {
             System.exit(0);
         }
     }
-    public static void main(String[] args) {
-            System.out.println("Welcome to the TicTacToe Game Program");
-
-            checkToss();
-            createEmptyBoard();
-            chooseLetter();
-            displayGameBoard();
-            makeMove();
-            checkFreeSpace();
-         }
+    /**
+     * method to make computer move to random location in board
+     * After player move, computer automatically move to random position using
+     * random method.
+     */
+    private static void computerTurn() {
+        int computerMove;
+        while (true) {
+            computerMove = (int) Math.floor(Math.random() * 10) % 9 + 1;
+            if (gameboard[computerMove] == ' ') {
+                break;
+            }
+        }
+        System.out.println("Computer choose:: " + computerMove);
+        gameboard[computerMove] = computer;
     }
+    public static void main(String[] args) {
+        System.out.println("Welcome to the TicTacToe Game Program");
+        /**
+         * method call
+         */
+        checkToss();
+        createEmptyBoard();
+        chooseLetter();
+        while (true) {
+            playerTurn();
+            computerTurn();
+            displayGameBoard();
+            checkFreeSpace();
+            winner();
+        }
+
+    }
+}
