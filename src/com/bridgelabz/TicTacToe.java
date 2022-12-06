@@ -105,7 +105,25 @@ public class TicTacToe {
             System.out.println("\nComputer Won The Toss! Computer Starts to play");
         }
     }
+    /**
+     *  * method to check player possible winning positions
+     * if player get 3 of his letters in a row (up,down,cross) then he becomes winner.
+     */
 
+    private static void winner() {
+        if ((gameboard[1] == player && gameboard[2] == player && gameboard[3] == player)
+                || (gameboard[4] == player && gameboard[5] == player && gameboard[6] == player)
+                || (gameboard[7] == player && gameboard[8] == player && gameboard[9] == player)
+                || (gameboard[1] == player && gameboard[5] == player && gameboard[9] == player)
+                || (gameboard[3] == player && gameboard[5] == player && gameboard[7] == player)
+                || (gameboard[1] == player && gameboard[4] == player && gameboard[7] == player)
+                || (gameboard[2] == player && gameboard[5] == player && gameboard[8] == player)
+                || (gameboard[3] == player && gameboard[6] == player && gameboard[9] == player)) {
+            displayGameBoard();
+            System.out.println("Player win the game");
+            System.exit(0);
+        }
+    }
     public static void main(String[] args) {
             System.out.println("Welcome to the TicTacToe Game Program");
 
@@ -115,7 +133,5 @@ public class TicTacToe {
             displayGameBoard();
             makeMove();
             checkFreeSpace();
-
-          }
-
+         }
     }
