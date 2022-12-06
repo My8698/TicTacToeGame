@@ -44,11 +44,28 @@ public class TicTacToe {
         System.out.println("----------");
         System.out.println(gameboard[7] + " | " + gameboard[8] + " | " + gameboard[9]);
     }
-        public static void main(String[] args) {
+
+    /**
+     * Select the index from 1 to 9 to make a move
+     */
+    private static void makeMove() {
+        System.out.println("Enter Location 1-9 to Make Move");
+        int playLocation = scanner.nextInt();
+        if (playLocation < 10 && playLocation > 0) {
+            gameboard[playLocation] = player;
+            displayGameBoard();
+            makeMove();
+
+        } else {
+            System.out.println("Invalid Choice");
+        }
+    }
+    public static void main(String[] args) {
             System.out.println("Welcome to the TicTacToe Game Program");
             createEmptyBoard();
             chooseLetter();
             displayGameBoard();
+            makeMove();
           }
 
     }
