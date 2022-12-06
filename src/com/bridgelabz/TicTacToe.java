@@ -1,4 +1,5 @@
 package com.bridgelabz;
+import java.util.Random;
 import java.util.Scanner;
 public class TicTacToe {
      /**
@@ -87,13 +88,34 @@ public class TicTacToe {
             System.out.println("Free space is available.......! you have "+numOfFreeSpaces+ " moves left");
         }
     }
+    /**
+     * method to check who plays first computer or user
+     * here random method is used to generate two random values 1 and 2.
+     * then depending on Player and computer to  decide to take position
+     */
+    public static void checkToss() {
+        Random random = new Random();
+        int tossResult = random.nextInt(2)+1;
+        System.out.println("Genarated random Number is :"+tossResult);
+        System.out.println("\nChoose 1 for Heads or 2 for Tails");
+        int coinSelect = scanner.nextInt();
+        if (coinSelect == tossResult) {
+            System.out.println("\nPlayer Won The Toss! Player Starts to play");
+        } else {
+            System.out.println("\nComputer Won The Toss! Computer Starts to play");
+        }
+    }
+
     public static void main(String[] args) {
             System.out.println("Welcome to the TicTacToe Game Program");
+
+            checkToss();
             createEmptyBoard();
             chooseLetter();
             displayGameBoard();
             makeMove();
             checkFreeSpace();
+
           }
 
     }
